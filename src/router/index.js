@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import routerTest from '@/components/routerTest'
+import ElementUiTest from '@/components/ElementUiTest'
+
 
 Vue.use(Router)
 
@@ -13,9 +15,16 @@ export default new Router({
       component: HelloWorld
     },
     {
-      path:'routerT',
-      name:'routerT',
+      path:'/routerTest',
+      name:'routerTest',
       component:routerTest
+    },
+    {
+      path:'/uiTest',
+      name:'ElementUiTest',
+      component:ElementUiTest
     }
+
+
   ]
 })
