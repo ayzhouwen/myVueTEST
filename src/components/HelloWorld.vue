@@ -1,5 +1,8 @@
 <template>
   <div class="row">
+    <div class="row" style="margin: 20px">
+      <router-link to="/uiTest"><a>跳转到element UI测试</a></router-link>
+    </div>
 
     <div >
       父组件值:{{updateNum}}
@@ -10,7 +13,7 @@
     <template v-else>
       <myC   :updateNum.sync="updateNum" :p_index="index"  :p_name="e.name" :p_age="e.order" v-for="(e,index) in list" v-if ="index<3"  :VB="e.order"  v-on:my-event="mycallBack" v-on:click.native="_click">
 <!--        <p>父组件显示子组件传过来的数据:{{slotProps.data}}</p>-->
-        <template slot="default" slot-scope="slotProps">
+        <template slot="de fault" slot-scope="slotProps">
           {{ slotProps.data }}
         </template>
       </myC>

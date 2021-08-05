@@ -2,59 +2,51 @@
   <div>
     <el-container>
       <el-header>Header</el-header>
-      <el-main>Main</el-main>
-    </el-container>
-
-    <el-container>
-      <el-header>Header</el-header>
-      <el-main>Main</el-main>
+      <el-main>
+        <el-form ref="form"  label-width="80px">
+          <el-form-item label="计数状态">
+            <el-input v-model="getStoreCount"></el-input>
+          </el-form-item>
+          <el-form-item>
+            <el-button type="primary" @click="addStoreCount">增加计数状态</el-button>
+            <el-button type="primary" @click="subStoreCount">减少计数状态</el-button>
+          </el-form-item>
+        </el-form>
+      </el-main>
       <el-footer>Footer</el-footer>
     </el-container>
-
-    <el-container>
-      <el-aside width="200px">Aside</el-aside>
-      <el-main>Main</el-main>
-    </el-container>
-
-    <el-container>
-      <el-header>Header</el-header>
-      <el-container>
-        <el-aside width="200px">Aside</el-aside>
-        <el-main>Main</el-main>
-      </el-container>
-    </el-container>
-
-    <el-container>
-      <el-header>Header</el-header>
-      <el-container>
-        <el-aside width="200px">Aside</el-aside>
-        <el-container>
-          <el-main>Main</el-main>
-          <el-footer>Footer</el-footer>
-        </el-container>
-      </el-container>
-    </el-container>
-
-    <el-container>
-      <el-aside width="200px">Aside</el-aside>
-      <el-container>
-        <el-header>Header</el-header>
-        <el-main>Main</el-main>
-      </el-container>
-    </el-container>
-
-    <el-container>
-      <el-aside width="200px">Aside</el-aside>
-      <el-container>
-        <el-header>Header</el-header>
-        <el-main>Main</el-main>
-        <el-footer>Footer</el-footer>
-      </el-container>
-    </el-container>
-
-
 </div>
 </template>
+
+
+<script>
+
+    export default {
+        name: "ElementUiTest",
+        data() {
+            return {
+
+            }
+        },
+        computed:{
+            getStoreCount(){
+                console.log('状态count值:',this.$store.state.count)
+                return this.$store.state.count
+            },
+
+        },
+        methods:{
+            addStoreCount(){
+              this.$store.commit('increment')
+            },
+            subStoreCount(){
+                this.$store.commit('decrement')
+
+            }
+        }
+
+    }
+</script>
 
 
 <style>
@@ -92,30 +84,3 @@
     line-height: 320px;
   }
 </style>
-
-<script>
-    export default {
-        name: "ElementUiTest",
-        // data() {
-        //     return {
-        //         options: [{
-        //             value: '选项1',
-        //             label: '黄金糕'
-        //         }, {
-        //             value: '选项2',
-        //             label: '双皮奶'
-        //         }, {
-        //             value: '选项3',
-        //             label: '蚵仔煎'
-        //         }, {
-        //             value: '选项4',
-        //             label: '龙须面'
-        //         }, {
-        //             value: '选项5',
-        //             label: '北京烤鸭'
-        //         }],
-        //         value: ''
-        //     }
-        // }
-    }
-</script>
