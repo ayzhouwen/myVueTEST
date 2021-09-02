@@ -3,6 +3,8 @@
     <div class="row" style="margin: 20px">
       <router-link to="/uiTest"><a>跳转到element UI测试</a></router-link>
     </div>
+    <button @click="jumppage1">js路由跳转到element UI测试</button>
+    <button @click="jumppage2">弹出新页面跳转到element UI测试</button>
 
     <div >
       父组件值:{{updateNum}}
@@ -106,6 +108,21 @@
         console.log('父组件给子组件绑定的事件')
         //alert(456)
       },
+      jumppage1(){
+          this.$router.push('/uiTest')
+      },
+      jumppage2(){
+          // this.$router.push('/uiTest')
+          let routeData = this.$router.resolve({
+              path: "/uiTest",
+              query: {
+                  name:'lei',
+                  age: 18,
+                  phoneNum:12345678901
+              }
+          });
+          window.open(routeData.href, '_blank');
+      }
     },
     computed: {
       dragOptions() {
@@ -116,7 +133,10 @@
           ghostClass: "ghost"
         };
       }
-    }
+    },
+      mounted() {
+        // this.$router.push('/uiTest')
+      }
   };
 </script>
 
