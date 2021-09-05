@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div style="background: #42b983">
     <slot :data="msg"></slot>
     <P>自定义组件</P>
     <p>{{p_name}}</p>
@@ -32,14 +32,6 @@
               name:document.getElementById('name'+this.p_index).value,
               order:document.getElementById('age'+this.p_index).value*1
             })
-
-            this.$emit('my-event',{
-              index:this.p_index,
-              name:document.getElementById('name'+this.p_index).value,
-              order:document.getElementById('age'+this.p_index).value*1
-            })
-
-            //
             this.$emit('update:updateNum',Math.random())
           }
       },

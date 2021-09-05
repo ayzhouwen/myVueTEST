@@ -9,10 +9,7 @@
     <div >
       父组件值:{{updateNum}}
     </div>
-    <template v-if="1>2">
-      <p>1>2</p>
-    </template>
-    <template v-else>
+    <template >
       <myC   :updateNum.sync="updateNum" :p_index="index"  :p_name="e.name" :p_age="e.order" v-for="(e,index) in list" v-if ="index<3"  :VB="e.order"  v-on:my-event="mycallBack" v-on:click.native="_click">
 <!--        <p>父组件显示子组件传过来的数据:{{slotProps.data}}</p>-->
         <template slot="de fault" slot-scope="slotProps">
@@ -20,68 +17,29 @@
         </template>
       </myC>
     </template>
-    <div class="col-2">
-      <button class="btn btn-secondary button" @click="sort">
-        To original order
-      </button>
-    </div>
 
-    <div class="col-6">
-      <h3>Transition</h3>
-      <draggable
-        class="list-group"
-        tag="ul"
-        v-model="list"
-        v-bind="dragOptions"
-        @start="drag = true"
-        @end="drag = false"
-      >
-        <transition-group type="transition" :name="!drag ? 'flip-list' : null">
-          <li
-            class="list-group-item"
-            v-for="element in list"
-            :key="element.order"
-          >
-            <i
-              :class="
-                element.fixed ? 'fa fa-anchor' : 'glyphicon glyphicon-pushpin'
-              "
-              @click="element.fixed = !element.fixed"
-              aria-hidden="true"
-            ></i>
-            {{ element.name }}
-          </li>
-        </transition-group>
-      </draggable>
-    </div>
+
 
 <!--    <rawDisplayer class="col-3" :value="list" title="List" />-->
 
 
-<div>{{list}}</div>
+<div>父组件list数据:{{list}}</div>
   </div>
 </template>
 
 <script>
-  import draggable from "vuedraggable";
   import myC from '@/components/myC'
   const message = [
-    "vue.draggable",
-    "draggable",
-    "component",
-    "for",
-    "vue.js 2.0",
-    "based",
-    "on",
-    "Sortablejs"
+      '张三',
+      '李四',
+      '王五'
   ];
   export default {
     name: "transition-example-2",
     display: "Transitions",
     order: 7,
     components: {
-      myC,
-      draggable
+      myC
     },
     data() {
       return {
@@ -125,14 +83,6 @@
       }
     },
     computed: {
-      dragOptions() {
-        return {
-          animation: 200,
-          group: "description",
-          disabled: false,
-          ghostClass: "ghost"
-        };
-      }
     },
       mounted() {
         // this.$router.push('/uiTest')
